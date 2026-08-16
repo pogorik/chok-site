@@ -10,17 +10,17 @@ type Status = "idle" | "submitting" | "success" | "error";
 const titles: Record<string, { title: string; subtitle: string }> = {
   "Бесплатный замер": {
     title: "Заказать бесплатный замер",
-    subtitle: "Оставьте телефон — согласуем удобное время для замера.",
+    subtitle: "Оставьте телефон - согласуем удобное время для замера.",
   },
   "Заказать звонок": {
     title: "Заказать звонок",
-    subtitle: "Оставьте телефон — перезвоним в течение 15 минут.",
+    subtitle: "Оставьте телефон - перезвоним в течение 15 минут.",
   },
 };
 
 const defaultTitle = {
   title: "Оставить заявку",
-  subtitle: "Оставьте телефон — перезвоним в течение 15 минут.",
+  subtitle: "Оставьте телефон - перезвоним в течение 15 минут.",
 };
 
 export default function CallbackModal({

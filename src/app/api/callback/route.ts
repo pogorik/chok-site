@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "invalid_phone" }, { status: 400 });
   }
 
-  // TODO: подключить реальную доставку заявки — email, Telegram-бот или CRM.
+  // TODO: подключить реальную доставку заявки - email, Telegram-бот или CRM.
   // Пока заявка только логируется на сервере.
   console.log("[callback request]", {
     name: (body.name ?? "").trim() || "(не указано)",

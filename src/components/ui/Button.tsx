@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import Link from "next/link";
+import { toLinkHref } from "@/data/nav";
 
 type ButtonProps = {
   children: ReactNode;
@@ -42,7 +43,7 @@ export default function Button({
   }
 
   return (
-    <Link href={href} className={classes}>
+    <Link href={toLinkHref(href)} className={classes}>
       {children}
     </Link>
   );

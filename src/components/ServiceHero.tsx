@@ -6,6 +6,7 @@ import Button from "./ui/Button";
 import Breadcrumbs from "./ui/Breadcrumbs";
 import type { Service } from "@/data/services";
 import { useCallbackModal } from "./CallbackModalContext";
+import { toLinkHref } from "@/data/nav";
 
 function ServiceCta({ service }: { service: Service }) {
   const { open: openCallbackModal } = useCallbackModal();
@@ -40,7 +41,7 @@ export default function ServiceHero({ service }: { service: Service }) {
         <Breadcrumbs
           items={[
             { label: "Главная", href: "/" },
-            { label: "Услуги", href: "/#services" },
+            { label: "Услуги", href: toLinkHref("/#services") },
             { label: service.title },
           ]}
         />

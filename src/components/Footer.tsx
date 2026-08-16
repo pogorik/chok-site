@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import Container from "./ui/Container";
-import { navLinks } from "@/data/nav";
+import { navLinks, toLinkHref } from "@/data/nav";
 import { services } from "@/data/services";
 import { companyRequisites } from "@/data/company";
 
@@ -40,7 +40,7 @@ export default function Footer() {
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <Link
-                    href={link.href}
+                    href={toLinkHref(link.href)}
                     className="text-[14px] text-white/70 transition-colors duration-[250ms] hover:text-white"
                   >
                     {link.label}

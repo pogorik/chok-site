@@ -32,7 +32,7 @@ export const calculatorCategories: CalculatorCategory[] = [
     minArea: 0.5,
     defaultWidth: 1.3,
     defaultHeight: 1.4,
-    hint: "Укажите размеры одного окна — расчёт на 1 изделие, количество умножит итог.",
+    hint: "Укажите размеры одного окна - расчёт на 1 изделие, количество умножит итог.",
     optionGroups: [
       {
         id: "profile",
@@ -61,7 +61,7 @@ export const calculatorCategories: CalculatorCategory[] = [
     minArea: 2,
     defaultWidth: 3,
     defaultHeight: 1.4,
-    hint: "Ширина — это длина балкона, высота — от парапета до потолка.",
+    hint: "Ширина - это длина балкона, высота - от парапета до потолка.",
     optionGroups: [
       {
         id: "type",

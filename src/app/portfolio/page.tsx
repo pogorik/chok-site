@@ -6,7 +6,7 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Container from "@/components/ui/Container";
 
 export const metadata: Metadata = {
-  title: "Наши работы — примеры остекления окон и балконов | ЧОК",
+  title: "Наши работы - примеры остекления окон и балконов | ЧОК",
   description:
     "Примеры выполненных работ Челябинской Оконной Компании: остекление балконов, пластиковые окна, алюминиевые конструкции, входные группы.",
 };

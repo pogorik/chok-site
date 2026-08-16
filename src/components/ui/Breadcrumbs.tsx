@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
+type BreadcrumbHref = string | { pathname: string; hash: string };
+
 export default function Breadcrumbs({
   items,
 }: {
-  items: { label: string; href?: string }[];
+  items: { label: string; href?: BreadcrumbHref }[];
 }) {
   return (
     <nav aria-label="Хлебные крошки" className="flex flex-wrap items-center gap-1.5 text-[13px] text-muted">

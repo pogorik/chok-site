@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Phone, Menu, X } from "lucide-react";
 import Container from "./ui/Container";
 import Button from "./ui/Button";
-import { navLinks } from "@/data/nav";
+import { navLinks, toLinkHref } from "@/data/nav";
 import { useCallbackModal } from "./CallbackModalContext";
 
 export default function Header() {
@@ -43,7 +43,7 @@ export default function Header() {
           {navLinks.map((link) => (
             <Link
               key={link.label}
-              href={link.href}
+              href={toLinkHref(link.href)}
               className="transition-colors duration-[250ms] hover:text-accent"
             >
               {link.label}
@@ -97,7 +97,7 @@ export default function Header() {
             {navLinks.map((link) => (
               <Link
                 key={link.label}
-                href={link.href}
+                href={toLinkHref(link.href)}
                 onClick={() => setMenuOpen(false)}
                 className="rounded-lg px-2 py-3 text-[15px] text-foreground transition-colors duration-[250ms] hover:bg-surface hover:text-accent"
               >
