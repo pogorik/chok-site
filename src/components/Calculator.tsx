@@ -57,13 +57,13 @@ export default function Calculator() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 items-start">
       <div className="rounded-[22px] bg-surface p-6 md:p-8">
-        <div className="flex flex-wrap gap-2">
+        <div className="no-scrollbar flex items-center gap-2 overflow-x-auto md:flex-wrap md:overflow-visible">
           {calculatorCategories.map((c) => (
             <button
               key={c.slug}
               type="button"
               onClick={() => setCategorySlug(c.slug)}
-              className={`rounded-[20px] px-4 py-2 text-[13px] md:text-[14px] font-semibold transition-colors duration-[250ms] ${
+              className={`shrink-0 whitespace-nowrap rounded-[20px] px-4 py-2 text-[13px] md:text-[14px] font-semibold transition-colors duration-[250ms] ${
                 c.slug === categorySlug
                   ? "bg-accent text-white"
                   : "bg-white text-muted hover:text-foreground border border-border"

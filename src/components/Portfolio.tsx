@@ -26,17 +26,17 @@ export default function Portfolio({ limit }: { limit?: number }) {
         <SectionTitle title="Наши работы" />
 
         <div className="mt-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-wrap items-center gap-2 md:gap-1">
+          <div className="no-scrollbar flex items-center gap-2 overflow-x-auto md:flex-wrap md:overflow-visible md:gap-1">
             {portfolioFilters.map((filter, i) => {
               const isActive = activeFilter === filter;
               const nextIsActive = activeFilter === portfolioFilters[i + 1];
               const showDivider = i < portfolioFilters.length - 1 && !isActive && !nextIsActive;
               return (
-                <div key={filter} className="flex items-center">
+                <div key={filter} className="flex shrink-0 items-center">
                   <button
                     type="button"
                     onClick={() => setActiveFilter(filter)}
-                    className={`rounded-[20px] px-4 py-2 text-[14px] font-semibold transition-colors duration-[250ms] ${
+                    className={`shrink-0 whitespace-nowrap rounded-[20px] px-4 py-2 text-[14px] font-semibold transition-colors duration-[250ms] ${
                       isActive
                         ? "bg-accent text-white"
                         : "text-muted hover:text-foreground"

@@ -4,7 +4,9 @@ export default function HeroBenefits({ compact = false }: { compact?: boolean })
   if (compact) {
     return (
       <>
-        {heroBenefits.map((item) => {
+        {heroBenefits
+          .filter((item) => item.showOnMobile)
+          .map((item) => {
           const Icon = item.icon;
           return (
             <div
