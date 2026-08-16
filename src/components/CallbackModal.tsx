@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { X, CheckCircle2, Loader2 } from "lucide-react";
 import { isValidRussianPhone, normalizeRussianPhone } from "@/lib/phone";
 
@@ -33,8 +34,10 @@ export default function CallbackModal({
 }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
-  const [error, setError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [formError, setFormError] = useState("");
 
   const copy = (reason && titles[reason]) || defaultTitle;
 
@@ -55,8 +58,10 @@ export default function CallbackModal({
     if (isOpen) {
       setName("");
       setPhone("");
+      setConsent(false);
       setStatus("idle");
-      setError("");
+      setPhoneError("");
+      setFormError("");
     }
   }, [isOpen]);
 
@@ -67,10 +72,16 @@ export default function CallbackModal({
 
     const normalizedPhone = normalizeRussianPhone(phone);
     if (!normalizedPhone) {
-      setError("Введите корректный российский номер телефона");
+      setPhoneError("Введите корректный российский номер телефона");
       return;
     }
-    setError("");
+    setPhoneError("");
+
+    if (!consent) {
+      setFormError("Нужно согласие на обработку персональных данных");
+      return;
+    }
+    setFormError("");
     setStatus("submitting");
 
     try {
@@ -84,11 +95,11 @@ export default function CallbackModal({
         setStatus("success");
       } else {
         setStatus("error");
-        setError("Не получилось отправить заявку. Попробуйте ещё раз или позвоните нам.");
+        setFormError("Не получилось отправить заявку. Попробуйте ещё раз или позвоните нам.");
       }
     } catch {
       setStatus("error");
-      setError("Не получилось отправить заявку. Проверьте соединение и попробуйте ещё раз.");
+      setFormError("Не получилось отправить заявку. Проверьте соединение и попробуйте ещё раз.");
     }
   };
 
@@ -168,26 +179,55 @@ export default function CallbackModal({
                   value={phone}
                   onChange={(e) => {
                     setPhone(e.target.value);
-                    if (error) setError("");
+                    if (phoneError) setPhoneError("");
                   }}
                   onBlur={() => {
                     if (phone && !isValidRussianPhone(phone)) {
-                      setError("Введите корректный российский номер телефона");
+                      setPhoneError("Введите корректный российский номер телефона");
                     }
                   }}
                   placeholder="+7 (___) ___-__-__"
                   className={`w-full rounded-xl border px-3.5 py-3 text-[15px] text-foreground focus:outline-none focus:ring-2 ${
-                    error
+                    phoneError
                       ? "border-red-400 focus:ring-red-200"
                       : "border-border focus:ring-accent/40"
                   }`}
                 />
-                {error && (
+                {phoneError && (
                   <span className="mt-1.5 block text-[12.5px] text-red-600">
-                    {error}
+                    {phoneError}
                   </span>
                 )}
               </label>
+
+              <label className="flex items-start gap-2.5 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={consent}
+                  onChange={(e) => {
+                    setConsent(e.target.checked);
+                    if (formError) setFormError("");
+                  }}
+                  className="mt-0.5 h-[18px] w-[18px] shrink-0 rounded border-border accent-accent"
+                />
+                <span className="text-[12.5px] leading-relaxed text-muted">
+                  Я согласен(на) на обработку персональных данных в
+                  соответствии с{" "}
+                  <Link
+                    href="/privacy"
+                    target="_blank"
+                    className="text-accent underline underline-offset-2 hover:text-accent-dark"
+                  >
+                    политикой конфиденциальности
+                  </Link>
+                </span>
+              </label>
+
+              {formError && (
+                <span className="-mt-2 block text-[12.5px] text-red-600">
+                  {formError}
+                </span>
+              )}
 
               <button
                 type="submit"
@@ -199,11 +239,6 @@ export default function CallbackModal({
                 )}
                 Отправить заявку
               </button>
-
-              <p className="text-center text-[12px] leading-relaxed text-muted">
-                Нажимая кнопку, вы соглашаетесь на обработку персональных
-                данных.
-              </p>
             </form>
           </>
         )}

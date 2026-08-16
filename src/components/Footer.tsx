@@ -4,6 +4,7 @@ import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import Container from "./ui/Container";
 import { navLinks } from "@/data/nav";
 import { services } from "@/data/services";
+import { companyRequisites } from "@/data/company";
 
 export default function Footer() {
   return (
@@ -100,12 +101,34 @@ export default function Footer() {
       </Container>
 
       <div className="border-t border-white/15">
-        <Container className="flex flex-col md:flex-row items-center justify-between gap-2 py-5 text-[13px] text-white/60">
+        <Container className="py-5 text-[12.5px] text-white/50">
+          <p className="leading-relaxed">
+            {companyRequisites.legalName} · ИНН {companyRequisites.inn} ·
+            ОГРН {companyRequisites.ogrn} · {companyRequisites.legalAddress}
+          </p>
+        </Container>
+      </div>
+
+      <div className="border-t border-white/15">
+        <Container className="flex flex-col md:flex-row items-center justify-between gap-3 py-5 text-[13px] text-white/60">
           <span>
             © {new Date().getFullYear()} Челябинская Оконная Компания. Все
             права защищены.
           </span>
-          <span>Производство и установка окон в Челябинске</span>
+          <div className="flex items-center gap-5">
+            <Link
+              href="/privacy"
+              className="transition-colors duration-[250ms] hover:text-white"
+            >
+              Политика конфиденциальности
+            </Link>
+            <Link
+              href="/offer"
+              className="transition-colors duration-[250ms] hover:text-white"
+            >
+              Публичная оферта
+            </Link>
+          </div>
         </Container>
       </div>
     </footer>
