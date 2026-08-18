@@ -11,7 +11,7 @@ export default function WorkSteps() {
         <SectionTitle title="Как мы работаем" />
         <div className="mt-10 md:mt-14 flex flex-col gap-8 md:grid md:grid-cols-5 md:gap-4 lg:flex lg:flex-row lg:items-start lg:justify-between lg:gap-3">
           {workSteps.map((step, i) => (
-            <div key={step.title} className="flex items-center justify-center gap-3 md:justify-start lg:flex-1">
+            <div key={step.title} className="flex items-center gap-3 lg:flex-1">
               <WorkStep {...step} />
               {i < workSteps.length - 1 && (
                 <ArrowRight

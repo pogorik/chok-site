@@ -8,7 +8,7 @@ type WorkStepProps = {
 
 export default function WorkStep({ icon: Icon, title, description }: WorkStepProps) {
   return (
-    <div className="flex items-start gap-4 md:flex-col md:items-start lg:flex-row lg:items-center">
+    <div className="flex flex-col items-center gap-3 text-center md:flex-col md:items-start md:gap-4 md:text-left lg:flex-row lg:items-center">
       <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-accent-dark text-white">
         <Icon size={26} />
       </span>
