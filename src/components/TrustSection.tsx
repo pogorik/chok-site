@@ -32,15 +32,20 @@ export default function TrustSection() {
               <h3 className="text-[22px] md:text-[24px] font-extrabold text-foreground">
                 Используем проверенные материалы
               </h3>
-              <div className="mt-7 flex flex-wrap items-center gap-x-9 gap-y-6">
+              <div className="mt-7 flex flex-wrap gap-3">
                 {brands.map((brand) => (
-                  <div key={brand.name} className="relative h-9 w-[120px]">
-                    <Image
-                      src={brand.src}
-                      alt={brand.name}
-                      fill
-                      className="object-contain object-left"
-                    />
+                  <div
+                    key={brand.name}
+                    className="flex h-16 w-[108px] shrink-0 items-center justify-center rounded-xl bg-white px-2.5 shadow-sm transition-all duration-[250ms] hover:-translate-y-0.5 hover:shadow-md"
+                  >
+                    <div className="relative h-7 w-full">
+                      <Image
+                        src={brand.src}
+                        alt={brand.name}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
