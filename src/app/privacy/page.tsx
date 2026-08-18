@@ -57,7 +57,7 @@ export default function PrivacyPage() {
                 <ul className="mt-3 flex flex-col gap-1.5 text-muted">
                   <li>{companyRequisites.legalName}</li>
                   <li>ИНН: {companyRequisites.inn}</li>
-                  <li>ОГРН: {companyRequisites.ogrn}</li>
+                  <li>ОГРНИП: {companyRequisites.ogrn}</li>
                   <li>Юридический адрес: {companyRequisites.legalAddress}</li>
                   <li>Телефон: {companyRequisites.phone}</li>
                   <li>Email: {companyRequisites.email}</li>

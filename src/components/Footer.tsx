@@ -104,7 +104,7 @@ export default function Footer() {
         <Container className="py-5 text-[12.5px] text-white/50">
           <p className="leading-relaxed">
             {companyRequisites.legalName} · ИНН {companyRequisites.inn} ·
-            ОГРН {companyRequisites.ogrn} · {companyRequisites.legalAddress}
+            ОГРНИП {companyRequisites.ogrn} · {companyRequisites.legalAddress}
           </p>
         </Container>
       </div>
