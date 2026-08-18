@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Наши работы - примеры остекления окон и балконов | ЧОК",
   description:
     "Примеры выполненных работ Челябинской Оконной Компании: остекление балконов, пластиковые окна, алюминиевые конструкции, входные группы.",
+  alternates: { canonical: "/portfolio" },
 };
 
 export default function PortfolioPage() {

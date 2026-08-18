@@ -9,4 +9,7 @@ export const companyRequisites = {
   phoneRaw: "+73517007797",
   email: "info@chok74.ru",
   city: "г. Челябинск",
+  // ЗАГЛУШКА: домен ещё не куплен. Заменить на реальный перед деплоем на VPS
+  // (используется в sitemap, canonical, Open Graph и JSON-LD).
+  siteUrl: "https://chok74.ru",
 };

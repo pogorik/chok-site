@@ -19,7 +19,7 @@ export const workSteps = [
   {
     icon: Gift,
     title: "Изготовление",
-    description: "Производим конструкции\nна собственном производстве",
+    description: "Изготавливаем\nна собственном производстве",
   },
   {
     icon: Truck,

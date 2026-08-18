@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Политика обработки персональных данных | ЧОК",
   description:
     "Политика обработки персональных данных Челябинской Оконной Компании в соответствии с 152-ФЗ «О персональных данных».",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

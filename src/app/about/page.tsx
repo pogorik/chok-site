@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   title: "О компании - Челябинская Оконная Компания (ЧОК)",
   description:
     "ЧОК - собственное производство пластиковых окон, остекление балконов и алюминиевые конструкции в Челябинске с 2015 года. Без посредников, гарантия до 10 лет.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

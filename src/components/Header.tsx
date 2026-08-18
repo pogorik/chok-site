@@ -31,7 +31,7 @@ export default function Header() {
               Челябинская
             </span>
             <span className="text-[15px] font-bold text-foreground">
-              Оконная Компания (ЧОК)
+              Оконная Компания
             </span>
             <span className="mt-0.5 text-[12px] font-semibold tracking-wide text-accent">
               БАЛКОНЫ · ОКНА

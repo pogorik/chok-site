@@ -24,7 +24,7 @@ export default function Footer() {
               <span className="flex flex-col leading-tight">
                 <span className="text-[14px] font-bold">Челябинская</span>
                 <span className="text-[14px] font-bold">
-                  Оконная Компания (ЧОК)
+                  Оконная Компания
                 </span>
               </span>
             </Link>

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Калькулятор стоимости окон и балконов - предварительный расчёт | ЧОК",
   description:
     "Рассчитайте примерную стоимость пластиковых окон, остекления балкона, входной группы или алюминиевой конструкции онлайн. Точная цена - после бесплатного замера.",
+  alternates: { canonical: "/calculator" },
 };
 
 export default function CalculatorPage() {

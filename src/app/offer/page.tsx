@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Публичная оферта | ЧОК",
   description:
     "Договор публичной оферты на оказание услуг по установке пластиковых окон, остеклению балконов и алюминиевым конструкциям.",
+  alternates: { canonical: "/offer" },
 };
 
 export default function OfferPage() {
