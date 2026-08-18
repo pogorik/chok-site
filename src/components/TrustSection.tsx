@@ -32,7 +32,7 @@ export default function TrustSection() {
               <h3 className="text-[22px] md:text-[24px] font-extrabold text-foreground">
                 Используем проверенные материалы
               </h3>
-              <div className="mt-7 flex flex-wrap gap-3">
+              <div className="mt-7 flex flex-wrap justify-center gap-3">
                 {brands.map((brand) => (
                   <div
                     key={brand.name}

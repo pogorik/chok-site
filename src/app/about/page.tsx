@@ -155,7 +155,7 @@ export default function AboutPage() {
                   <h2 className="text-[22px] md:text-[24px] font-extrabold text-foreground">
                     Материалы, с которыми работаем
                   </h2>
-                  <div className="mt-7 flex flex-wrap gap-3">
+                  <div className="mt-7 flex flex-wrap justify-center gap-3">
                     {brands.map((brand) => (
                       <div
                         key={brand.name}
