@@ -81,10 +81,10 @@ export default function Footer() {
               <li className="flex items-start gap-2.5 text-[14px] text-white/70">
                 <Mail size={16} className="mt-0.5 shrink-0" />
                 <a
-                  href="mailto:info@chok74.ru"
+                  href={`mailto:${companyRequisites.email}`}
                   className="transition-colors duration-[250ms] hover:text-white"
                 >
-                  info@chok74.ru
+                  {companyRequisites.email}
                 </a>
               </li>
               <li className="flex items-start gap-2.5 text-[14px] text-white/70">
@@ -93,7 +93,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2.5 text-[14px] text-white/70">
                 <Clock size={16} className="mt-0.5 shrink-0" />
-                <span>Ежедневно с 9:00 до 20:00</span>
+                <span>{companyRequisites.workingHours}</span>
               </li>
             </ul>
           </div>

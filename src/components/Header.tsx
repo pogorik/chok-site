@@ -7,6 +7,7 @@ import { Phone, Menu, X } from "lucide-react";
 import Container from "./ui/Container";
 import Button from "./ui/Button";
 import { navLinks, toLinkHref } from "@/data/nav";
+import { companyRequisites } from "@/data/company";
 import { useCallbackModal } from "./CallbackModalContext";
 
 export default function Header() {
@@ -60,7 +61,7 @@ export default function Header() {
               +7 (351) 700-77-97
             </a>
             <span className="text-[12px] text-muted">
-              Ежедневно с 9:00 до 20:00
+              {companyRequisites.workingHours}
             </span>
           </div>
           <Button
