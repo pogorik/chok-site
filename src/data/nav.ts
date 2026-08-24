@@ -3,7 +3,6 @@ export const navLinks = [
   { label: "О компании", href: "/about" },
   { label: "Услуги", href: "/#services" },
   { label: "Наши работы", href: "/portfolio" },
-  { label: "Отзывы", href: "/#footer" },
   { label: "Контакты", href: "/#footer" },
 ];
 
