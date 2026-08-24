@@ -4,6 +4,12 @@ type CallbackLeadInput = {
   reason: string;
 };
 
+// Создаёт заявку в amoCRM через /leads/unsorted/forms, чтобы она попала
+// в специальный статус "Неразобранное" (id 1 в терминах API), а не в
+// обычный статус воронки. Этот эндпоинт не позволяет задать name лида
+// или контакта (amoCRM намеренно блокирует это, пока карточка
+// "неразобранная") - поэтому имя клиента передаётся текстом в
+// metadata.form_name, где оно будет видно в карточке.
 export async function createAmoCrmLead({ name, phone, reason }: CallbackLeadInput) {
   const token = process.env.AMOCRM_TOKEN;
   const subdomain = process.env.AMOCRM_SUBDOMAIN;
@@ -13,32 +19,37 @@ export async function createAmoCrmLead({ name, phone, reason }: CallbackLeadInpu
   }
 
   const pipelineId = Number(process.env.AMOCRM_PIPELINE_ID ?? 9065666);
-  const statusId = Number(process.env.AMOCRM_STATUS_ID ?? 72982178);
-  const phoneFieldId = Number(process.env.AMOCRM_PHONE_FIELD_ID ?? 292243);
-  const phoneEnumId = Number(process.env.AMOCRM_PHONE_ENUM_ID ?? 179885);
+  const now = Math.floor(Date.now() / 1000);
 
   const payload = [
     {
-      name: `Заявка с сайта: ${reason}`,
+      request_id: crypto.randomUUID(),
+      source_name: "Сайт chok74.ru",
+      source_uid: "chok-site-callback",
       pipeline_id: pipelineId,
-      status_id: statusId,
+      created_at: now,
       _embedded: {
         contacts: [
           {
-            name: name || "Без имени",
             custom_fields_values: [
               {
-                field_id: phoneFieldId,
-                values: [{ value: phone, enum_id: phoneEnumId }],
+                field_code: "PHONE",
+                values: [{ value: phone }],
               },
             ],
           },
         ],
       },
+      metadata: {
+        form_id: "callback",
+        form_name: `${reason} - ${name}`,
+        form_page: "https://chok74.ru/",
+        form_sent_at: now,
+      },
     },
   ];
 
-  const response = await fetch(`https://${subdomain}.amocrm.ru/api/v4/leads/complex`, {
+  const response = await fetch(`https://${subdomain}.amocrm.ru/api/v4/leads/unsorted/forms`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
