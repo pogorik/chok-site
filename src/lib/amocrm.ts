@@ -7,11 +7,10 @@ type CallbackLeadInput = {
 };
 
 // Создаёт заявку в amoCRM через /leads/unsorted/forms, чтобы она попала
-// в специальный статус "Неразобранное" (id 1 в терминах API), а не в
-// обычный статус воронки. Этот эндпоинт не позволяет задать name лида
-// или контакта (amoCRM намеренно блокирует это, пока карточка
-// "неразобранная") - поэтому имя клиента передаётся текстом в
-// metadata.form_name, где оно будет видно в карточке.
+// в специальный статус "Неразобранное", а не в обычный статус воронки.
+// Этот эндпоинт не позволяет задать системное имя лида/контакта, пока
+// карточка "неразобранная" - но обычные кастомные поля задавать можно,
+// поэтому имя клиента пишется в кастомное поле лида "ФИО".
 export async function createAmoCrmLead({ name, phone, reason, ip, referer }: CallbackLeadInput) {
   const token = process.env.AMOCRM_TOKEN;
   const subdomain = process.env.AMOCRM_SUBDOMAIN;
@@ -21,6 +20,7 @@ export async function createAmoCrmLead({ name, phone, reason, ip, referer }: Cal
   }
 
   const pipelineId = Number(process.env.AMOCRM_PIPELINE_ID ?? 9065666);
+  const fioFieldId = Number(process.env.AMOCRM_FIO_FIELD_ID ?? 292343);
   const now = Math.floor(Date.now() / 1000);
 
   const payload = [
@@ -31,6 +31,16 @@ export async function createAmoCrmLead({ name, phone, reason, ip, referer }: Cal
       pipeline_id: pipelineId,
       created_at: now,
       _embedded: {
+        leads: [
+          {
+            custom_fields_values: [
+              {
+                field_id: fioFieldId,
+                values: [{ value: name }],
+              },
+            ],
+          },
+        ],
         contacts: [
           {
             custom_fields_values: [
