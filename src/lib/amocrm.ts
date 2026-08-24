@@ -55,7 +55,7 @@ export async function createAmoCrmLead({ name, phone, reason, ip, referer }: Cal
       metadata: {
         form_id: "callback",
         form_name: `${reason} - ${name}`,
-        form_page: "https://chok74.ru/",
+        form_page: "Заявка с сайта",
         form_sent_at: now,
         ...(ip && { ip }),
         ...(referer && { referer }),
