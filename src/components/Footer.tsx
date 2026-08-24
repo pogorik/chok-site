@@ -89,7 +89,14 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2.5 text-[14px] text-white/70">
                 <MapPin size={16} className="mt-0.5 shrink-0" />
-                <span>г. Челябинск</span>
+                <a
+                  href={companyRequisites.yandexMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors duration-[250ms] hover:text-white"
+                >
+                  {companyRequisites.legalAddress}
+                </a>
               </li>
               <li className="flex items-start gap-2.5 text-[14px] text-white/70">
                 <Clock size={16} className="mt-0.5 shrink-0" />

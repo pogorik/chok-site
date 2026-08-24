@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { normalizeRussianPhone } from "@/lib/phone";
+import { createAmoCrmLead } from "@/lib/amocrm";
 
 export async function POST(request: Request) {
   let body: { name?: string; phone?: string; reason?: string };
@@ -16,14 +17,25 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "invalid_phone" }, { status: 400 });
   }
 
-  // TODO: подключить реальную доставку заявки - email, Telegram-бот или CRM.
-  // Пока заявка только логируется на сервере.
+  const name = (body.name ?? "").trim() || "(не указано)";
+  const reason = body.reason ?? "(не указано)";
+
   console.log("[callback request]", {
-    name: (body.name ?? "").trim() || "(не указано)",
+    name,
     phone: normalizedPhone,
-    reason: body.reason ?? "(не указано)",
+    reason,
     receivedAt: new Date().toISOString(),
   });
+
+  try {
+    const result = await createAmoCrmLead({ name, phone: normalizedPhone, reason });
+    if (result.skipped) {
+      console.warn("[amocrm] AMOCRM_TOKEN/AMOCRM_SUBDOMAIN не заданы - лид не отправлен");
+    }
+  } catch (err) {
+    // Заявка уже залогирована выше - не роняем ответ пользователю из-за сбоя CRM.
+    console.error("[amocrm] не удалось создать лид", err);
+  }
 
   return NextResponse.json({ ok: true });
 }

@@ -7,7 +7,6 @@ export const trustPoints = [
 
 export const brands = [
   { name: "REHAU", src: "/images/brands/rehau.png" },
-  { name: "KBE", src: "/images/brands/kbe.svg" },
   { name: "Exprof", src: "/images/brands/exprof.svg" },
   { name: "Salamander", src: "/images/brands/salamander.svg" },
   { name: "MACO", src: "/images/brands/maco.png" },

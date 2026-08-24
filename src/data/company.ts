@@ -9,6 +9,8 @@ export const companyRequisites = {
   email: "chok174@yandex.ru",
   city: "г. Челябинск",
   workingHours: "Пн-Пт 9:00-18:00, Сб 10:00-15:00",
+  yandexMapsUrl:
+    "https://yandex.ru/maps/org/chelyabinskaya_okonnaya_kompaniya/51771924171/",
   // ЗАГЛУШКА: домен ещё не куплен. Заменить на реальный перед деплоем на VPS
   // (используется в sitemap, canonical, Open Graph и JSON-LD).
   siteUrl: "https://chok74.ru",
