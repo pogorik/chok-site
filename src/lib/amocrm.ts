@@ -2,6 +2,8 @@ type CallbackLeadInput = {
   name: string;
   phone: string;
   reason: string;
+  ip?: string;
+  referer?: string;
 };
 
 // Создаёт заявку в amoCRM через /leads/unsorted/forms, чтобы она попала
@@ -10,7 +12,7 @@ type CallbackLeadInput = {
 // или контакта (amoCRM намеренно блокирует это, пока карточка
 // "неразобранная") - поэтому имя клиента передаётся текстом в
 // metadata.form_name, где оно будет видно в карточке.
-export async function createAmoCrmLead({ name, phone, reason }: CallbackLeadInput) {
+export async function createAmoCrmLead({ name, phone, reason, ip, referer }: CallbackLeadInput) {
   const token = process.env.AMOCRM_TOKEN;
   const subdomain = process.env.AMOCRM_SUBDOMAIN;
 
@@ -45,6 +47,8 @@ export async function createAmoCrmLead({ name, phone, reason }: CallbackLeadInpu
         form_name: `${reason} - ${name}`,
         form_page: "https://chok74.ru/",
         form_sent_at: now,
+        ...(ip && { ip }),
+        ...(referer && { referer }),
       },
     },
   ];

@@ -27,8 +27,14 @@ export async function POST(request: Request) {
     receivedAt: new Date().toISOString(),
   });
 
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    request.headers.get("x-real-ip") ??
+    undefined;
+  const referer = request.headers.get("referer") ?? undefined;
+
   try {
-    const result = await createAmoCrmLead({ name, phone: normalizedPhone, reason });
+    const result = await createAmoCrmLead({ name, phone: normalizedPhone, reason, ip, referer });
     if (result.skipped) {
       console.warn("[amocrm] AMOCRM_TOKEN/AMOCRM_SUBDOMAIN не заданы - лид не отправлен");
     }
