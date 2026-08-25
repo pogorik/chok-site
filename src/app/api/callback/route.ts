@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { normalizeRussianPhone } from "@/lib/phone";
 import { createAmoCrmLead } from "@/lib/amocrm";
+import { sendVkNotification } from "@/lib/vk";
 
 export async function POST(request: Request) {
   let body: { name?: string; phone?: string; reason?: string };
@@ -41,6 +42,15 @@ export async function POST(request: Request) {
   } catch (err) {
     // Заявка уже залогирована выше - не роняем ответ пользователю из-за сбоя CRM.
     console.error("[amocrm] не удалось создать лид", err);
+  }
+
+  try {
+    const result = await sendVkNotification({ name, phone: normalizedPhone, reason });
+    if (result.skipped) {
+      console.warn("[vk] VK_GROUP_TOKEN/VK_GROUP_ID/VK_PEER_ID не заданы - уведомление не отправлено");
+    }
+  } catch (err) {
+    console.error("[vk] не удалось отправить уведомление", err);
   }
 
   return NextResponse.json({ ok: true });
