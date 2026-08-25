@@ -54,8 +54,14 @@ const localBusinessJsonLd = {
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",
+    streetAddress: "ул. Сталеваров, 29",
     addressLocality: "Челябинск",
     addressCountry: "RU",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 55.236483,
+    longitude: 61.386141,
   },
   areaServed: "Челябинск",
   openingHoursSpecification: [
