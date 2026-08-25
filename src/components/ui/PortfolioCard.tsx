@@ -15,6 +15,7 @@ export default function PortfolioCard({
         src={image}
         alt={alt}
         fill
+        sizes="(min-width: 1024px) 20vw, (min-width: 640px) 31vw, 47vw"
         className="object-cover transition-transform duration-[250ms] ease-out group-hover:scale-[1.02]"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-100 transition-opacity duration-[250ms] ease-out md:opacity-0 md:group-hover:opacity-100" />

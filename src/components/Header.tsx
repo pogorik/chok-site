@@ -23,6 +23,7 @@ export default function Header() {
               src="/images/logo-chok.webp"
               alt="Логотип Челябинской Оконной Компании"
               fill
+              sizes="56px"
               className="object-contain"
               priority
             />

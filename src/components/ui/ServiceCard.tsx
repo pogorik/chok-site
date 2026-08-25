@@ -26,6 +26,7 @@ export default function ServiceCard({
         src={image}
         alt={alt}
         fill
+        sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 94vw"
         className="object-cover transition-transform duration-[250ms] ease-out group-hover:scale-[1.02]"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-white via-white/75 to-transparent" />

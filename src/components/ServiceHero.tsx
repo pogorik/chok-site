@@ -54,6 +54,7 @@ export default function ServiceHero({ service }: { service: Service }) {
               alt={service.alt}
               fill
               priority
+              sizes="(min-width: 1480px) 1480px, 94vw"
               className="object-cover"
             />
           </div>
@@ -70,6 +71,7 @@ export default function ServiceHero({ service }: { service: Service }) {
               alt={service.alt}
               fill
               priority
+              sizes="(min-width: 1480px) 1480px, 94vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-white/10" />

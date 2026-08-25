@@ -45,6 +45,7 @@ export default function Hero() {
               alt="Остекление балкона Челябинской Оконной Компанией"
               fill
               priority
+              sizes="94vw"
               className="object-cover"
             />
           </div>
@@ -76,6 +77,7 @@ export default function Hero() {
               alt="Остекление балкона Челябинской Оконной Компанией"
               fill
               priority
+              sizes="(min-width: 1480px) 1480px, 94vw"
               className="object-cover object-[85%_center]"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-white via-white/75 to-white/0" />

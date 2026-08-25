@@ -43,6 +43,7 @@ export default function TrustSection() {
                         src={brand.src}
                         alt={brand.name}
                         fill
+                        sizes="108px"
                         className="object-contain"
                       />
                     </div>
